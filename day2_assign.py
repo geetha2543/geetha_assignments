@@ -14,11 +14,10 @@ def max_file(directory,filename,maxsize):
         if(os.path.isdir(item)):
             maxsize,filename=max_file(item,filename,maxsize)
         else:
-            if(os.path.isfile(item)):
-                size=os.path.getsize(item)
-                if(size>maxsize):
-                    maxsize=size;
-                    filename=os.path.basename(item)
+            size=os.path.getsize(item)
+            if(size>maxsize):
+                maxsize=size;
+                filename=os.path.basename(item)
     return [maxsize,filename] 
 
 print(max_file(directory,"no file is present in the directory",0)[1])
