@@ -41,7 +41,6 @@ def copyall(directory,copyfile):
            copyall(item,copyfile)
         else:
             if item in filter_files:
-                print(item)
                 with open(item,"rt") as f1:
                     copyfile.write(f1.read())
     pass
