@@ -25,7 +25,7 @@ def max_file(directory,filename,maxsize):
 
 
 
-print(max_file(path,"",0)[1])
+print(max_file(path,"no file is present in the directory",0)[1])
     
     
     
