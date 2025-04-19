@@ -47,6 +47,7 @@ def download(url,directory):
             with open(os.path.join(directory+loc+path.replace("/","_")+ '.html'), 'w', encoding='utf-8') as file:
                 file.write(resp.text) 
     except Exception as e: 
+        print("cannot download ",url)
         pass
                 
 def download_all_pages(final_set,directory):
