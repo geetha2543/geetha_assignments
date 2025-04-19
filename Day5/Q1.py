@@ -40,7 +40,6 @@ def repeat_depth(n,main_set):
 def download(url,directory):
     print(url)
     resp=requests.get(url)
-    soup=BeautifulSoup(resp.text,"html.parser")
     _,loc,path,_,_,_=urlparse(url)
     try:
         if(resp.text):
