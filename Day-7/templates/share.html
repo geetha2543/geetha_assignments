@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title> Update for Today </title>
+    </head>
+    <body>
+	{%if msg %}
+        {% for i in msg %}<h1>{{i}}</h1>{% endfor %}<br/>
+	{% else %}
+		<h1>notepad is empty<h1>
+    {% endif   %}
+		<a href="http://localhost:5000">home page</a>
+    </body>
+</html>
