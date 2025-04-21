@@ -7,14 +7,14 @@ import os
 import glob
  
 
-directory=r"C:\Users\Geetha\handson"
+directory = r"C:\Users\Geetha\handson"
 
-copypath=r"C:\Users\Geetha\copyfile.txt"
-filter="txt"
+copypath = r"C:\Users\Geetha\copyfile.txt"
+filter = "txt"
 def copyall(directory,copyfile):
-    directory_path=directory+r"\*"
-    filter_files=[items for items in glob.glob(f"{directory}//*.{filter}")]
-    items=glob.glob(directory_path)
+    directory_path = directory+r"\*"
+    filter_files = [items for items in glob.glob(f"{directory}//*.{filter}")]
+    items = glob.glob(directory_path)
     for item in items:
         if(os.path.isdir(item)):
            copyall(item,copyfile)
