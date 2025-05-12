@@ -1,0 +1,197 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>LangChain Chatbot</title>
+    <style>
+        #history-section {
+            display: none;
+            margin-top: 10px;
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        li {
+            margin-bottom: 6px;
+        }
+    </style>
+    <script>
+        function toggleHistory() {
+            const historySection = document.getElementById("history-section");
+            if (historySection.style.display === "none") {
+                historySection.style.display = "block";
+            } else {
+                historySection.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>LangChain Chatbot</h1>
+
+    <form method="POST">
+        <label><strong>Query:</strong></label>
+        <input type="text" name="query" required autofocus>
+        <input type="submit" value="Send">
+    </form>
+
+    <h3>Result:</h3>
+    <p>{{ result }}</p>
+
+    <button onclick="toggleHistory()">Show/Hide History</button>
+
+    <div id="history-section">
+        <h3>History:</h3>
+        <ul>
+            {% for role, content in chat %}
+                <li><strong>{{ role.title() }}:</strong> {{ content }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
+ -->
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LangChain Chatbot</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #FFF8F0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .chat-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #FFF;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .chat-box {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        .chat-bubble {
+            padding: 10px;
+            border-radius: 15px;
+            margin-bottom: 10px;
+            max-width: 80%;
+        }
+        .user {
+            background-color: #F8C8D8;
+            align-self: flex-end;
+            border-bottom-right-radius: 0;
+        }
+        .bot {
+            background-color: #A8D8F8;
+            align-self: flex-start;
+            border-bottom-left-radius: 0;
+        }
+        .input-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            border-radius: 25px;
+            border: 1px solid #DDD;
+            background-color: #E6D0FF;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            width: 15%;
+            padding: 10px;
+            border-radius: 25px;
+            border: none;
+            background-color: #F8C8D8;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button {
+            background-color: #F8C8D8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #history-section {
+            display: none;
+            margin-top: 20px;
+            background-color: #FFF;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #history-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        #history-section li {
+            margin-bottom: 10px;
+        }
+        #history-section li.user {
+            background-color: #F8C8D8;
+            padding: 10px;
+            border-radius: 15px;
+            align-self: flex-end;
+        }
+        #history-section li.bot {
+            background-color: #A8D8F8;
+            padding: 10px;
+            border-radius: 15px;
+            align-self: flex-start;
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <h2>LangChain Chatbot</h2>
+    <div class="chat-box" id="chat-box">
+        {% for role, content in chat %}
+            <div class="chat-bubble {{ role }}">
+                <strong>{{ role.title() }}:</strong> {{ content }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <form method="POST" class="input-area">
+        <input type="text" name="query" placeholder="Type your message..." required>
+        <input type="submit" value="Send">
+    </form>
+
+    <button onclick="toggleHistory()">Show/Hide History</button>
+
+    <div id="history-section">
+        <h3>Chat History:</h3>
+        <ul>
+            {% for role, content in chat %}
+                <li class="{{ role }}">{{ role.title() }}: {{ content }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleHistory() {
+        const historySection = document.getElementById("history-section");
+        historySection.style.display = historySection.style.display === "none" ? "block" : "none";
+    }
+</script>
+
+</body>
+</html>
